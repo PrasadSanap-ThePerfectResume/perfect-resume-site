@@ -1,7 +1,9 @@
 package com.pvs.perfectresume.constants;
 
 public class ResponsesConstants {
+    public static final String OTP_VERIFIED = "YOUR OTP IS VERIFIED";
     public static String OTP_NOT_SEND="YOUR OTP NOT SEND";
+    public static String OTP_NOT_VERIFIED="YOUR OTP NOT VERIFIED";
     public static String OTP_SEND="YOUR OTP IS SEND";
     public static String VALID_EMAIL="PLEASE ENTER VALID EMAIL";
     public static int FAILED_CODE=1004;

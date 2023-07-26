@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
                 otpValidation.setUsername(user.getUsername());
             }
             otpValidation.setOtp(String.valueOf(generatedOTP));
-
+            otpValidation.setVerify(false);
             //Save user with otp into table
             otpValidationRepository.save(otpValidation);
             apiResponseBody.setMessage(ResponsesConstants.OTP_SEND);
@@ -70,6 +70,25 @@ public class UserServiceImpl implements UserService {
             apiResponseBody.setMessage(ResponsesConstants.OTP_NOT_SEND);
             apiResponseBody.setStatus(ResponsesConstants.FAILED);
             apiResponseBody.setStatusCode(ResponsesConstants.FAILED_CODE);
+        }
+        return apiResponseBody;
+    }
+
+    @Override
+    public ApiResponseBody verifyOtp(OTPValidation otpValidation) {
+        apiResponseBody =new ApiResponseBody();
+        OTPValidation presentOtpValidation=otpValidationRepository.findByUsername(otpValidation.getUsername());
+        if(presentOtpValidation.getOtp().equals( otpValidation.getOtp())){
+            //Updating verify otp
+            presentOtpValidation.setVerify(true);
+            otpValidationRepository.save(presentOtpValidation);
+            apiResponseBody.setStatus(ResponsesConstants.SUCCESS);
+            apiResponseBody.setStatusCode(ResponsesConstants.SUCCESS_CODE);
+            apiResponseBody.setMessage(ResponsesConstants.OTP_VERIFIED);
+        }else{
+            apiResponseBody.setStatus(ResponsesConstants.FAILED);
+            apiResponseBody.setStatusCode(ResponsesConstants.FAILED_CODE);
+            apiResponseBody.setMessage(ResponsesConstants.OTP_NOT_VERIFIED);
         }
         return apiResponseBody;
     }

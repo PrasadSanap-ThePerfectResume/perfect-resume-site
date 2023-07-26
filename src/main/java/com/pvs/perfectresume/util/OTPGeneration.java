@@ -6,6 +6,8 @@ public class OTPGeneration {
     public static int getOTP(){
         Random random = new Random();
         int randomNumber= random.nextInt(999999);
+        while(randomNumber<99999)
+            randomNumber=random.nextInt(999999);
         return randomNumber;
     }
 }
