@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: admin
+    password: OmSai@12345
+    url: jdbc:mysql://prasadsanap:3306/db_perfect_resume
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
