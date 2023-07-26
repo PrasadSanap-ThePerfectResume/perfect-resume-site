@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @ToString
-public class RequestBody {
+public class ApiRequestBody {
     private User user;
+    private String otp;
 }

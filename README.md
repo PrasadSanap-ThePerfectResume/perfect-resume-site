@@ -1,10 +1,16 @@
 # Perfect-Resume-Site
 #### Owner - Prasad Sanap
-1. Prerequisite when pushing code.
+**1. Project Details**
 ___
+- Java Version :- 11
+- Database     :- MySQL
+- Back End :- Java, HQL
 
-`mvn clean install`
+**2. Build Commands.**
+___
+~~~~ 
+mvn clean install
 ~~~~ 
 
-Build the project successfully.
-~~~~
+**Build the project successfully.**
+

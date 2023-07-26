@@ -1,8 +1,9 @@
 package com.pvs.perfectresume.service.serviceImpl;
 
+import com.pvs.perfectresume.constants.ResponsesConstants;
 import com.pvs.perfectresume.model.OTPValidation;
-import com.pvs.perfectresume.model.RequestBody;
-import com.pvs.perfectresume.model.ResponseBody;
+import com.pvs.perfectresume.model.ApiRequestBody;
+import com.pvs.perfectresume.model.ApiResponseBody;
 import com.pvs.perfectresume.model.User;
 import com.pvs.perfectresume.repository.OTPValidationRepository;
 import com.pvs.perfectresume.repository.UserRepository;
@@ -23,40 +24,54 @@ public class UserServiceImpl implements UserService {
     private OTPValidationRepository otpValidationRepository;
 
 
-    private ResponseBody responseBody;
-    private Pattern pattern=Pattern.compile("[#$%^&*()]");
+    private ApiResponseBody apiResponseBody;
+    private Pattern pattern=Pattern.compile("[!~?/#$\\{%^&*(\\]}|=)\\[]");
     @Override
     public String show() {
         return "HELLO PRASAD";
     }
 
     @Override
-    public ResponseBody sendOtp(RequestBody requestBody) {
-        responseBody=new ResponseBody();
-        if(pattern.matcher(requestBody.getUser().getUsername()).find()) {
-            responseBody.setOtp("000000");
-            return responseBody;
+    public ApiResponseBody sendOtp(ApiRequestBody apiRequestBody) {
+        apiResponseBody =new ApiResponseBody();
+        try {
+            if (pattern.matcher(apiRequestBody.getUser().getUsername()).find()) {
+                apiResponseBody.setMessage(ResponsesConstants.VALID_EMAIL);
+                apiResponseBody.setStatus(ResponsesConstants.FAILED);
+                apiResponseBody.setStatusCode(ResponsesConstants.FAILED_CODE);
+                return apiResponseBody;
+            }
+
+            int generatedOTP = OTPGeneration.getOTP();
+            //Check first is user already present in database
+            User user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
+            if (user == null) {
+                //Save user first into table
+                userRepository.save(apiRequestBody.getUser());
+            }
+            //Fetch user from table with id.
+            user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
+            OTPValidation otpValidation=otpValidationRepository.findByUsername(apiRequestBody.getUser().getUsername());
+            if(otpValidation==null){
+                //Creating new record.
+                otpValidation=new OTPValidation();
+                otpValidation.setUser(user);
+                otpValidation.setUsername(user.getUsername());
+            }
+            otpValidation.setOtp(String.valueOf(generatedOTP));
+
+            //Save user with otp into table
+            otpValidationRepository.save(otpValidation);
+            apiResponseBody.setMessage(ResponsesConstants.OTP_SEND);
+            apiResponseBody.setStatus(ResponsesConstants.SUCCESS);
+            apiResponseBody.setStatusCode(ResponsesConstants.SUCCESS_CODE);
+
+        }catch(Exception e){
+            apiResponseBody.setMessage(ResponsesConstants.OTP_NOT_SEND);
+            apiResponseBody.setStatus(ResponsesConstants.FAILED);
+            apiResponseBody.setStatusCode(ResponsesConstants.FAILED_CODE);
         }
-
-        int generatedOTP=OTPGeneration.getOTP();
-        responseBody.setOtp(String.valueOf(generatedOTP));
-        //Check first is user already present in database
-        User user=userRepository.findByUsername(requestBody.getUser().getUsername());
-        if(user==null) {
-            //Save user first into table
-            userRepository.save(requestBody.getUser());
-        }
-        //Fetch user from table with id.
-        user=userRepository.findByUsername(requestBody.getUser().getUsername());
-
-        //Save user with otp into table
-        OTPValidation otpValidation=new OTPValidation();
-        otpValidation.setUser(user);
-        otpValidation.setOtp(String.valueOf(generatedOTP));
-        otpValidation.setUsername(user.getUsername());
-        otpValidationRepository.save(otpValidation);
-
-        return responseBody;
+        return apiResponseBody;
     }
 
     //("[a-zA-Z0-9]{6}","prasad1") -->true
