@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PerfectResumeApplication implements CommandLineRunner {
 
-	Logger logger = LoggerFactory.getLogger(PerfectResumeApplication.class);
+	private Logger logger = LoggerFactory.getLogger(PerfectResumeApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(PerfectResumeApplication.class, args);
 	}

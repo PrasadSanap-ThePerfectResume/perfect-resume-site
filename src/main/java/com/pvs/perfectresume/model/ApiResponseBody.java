@@ -6,7 +6,6 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 public class ApiResponseBody {
     private String message;
     private int statusCode;

@@ -5,10 +5,12 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Getter
 @Setter
-@ToString
 public class ApiRequestBody {
     private User user;
     private String otp;
+    private Address address;
 }

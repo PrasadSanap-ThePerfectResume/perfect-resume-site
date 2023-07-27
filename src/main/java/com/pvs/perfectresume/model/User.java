@@ -1,16 +1,17 @@
 package com.pvs.perfectresume.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="tb_user")
 @Getter
 @Setter
-@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,5 +21,10 @@ public class User {
     private String password;
 
     @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="user")
+    @JsonIgnore
     private OTPValidation otpValidation;
+
+    @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="user")
+    @JsonIgnore
+    private Address address;
 }

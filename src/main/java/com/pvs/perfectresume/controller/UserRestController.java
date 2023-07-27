@@ -34,5 +34,13 @@ public class UserRestController {
     }
 
 
+    @PostMapping(value = "/address",consumes= "application/json",produces="application/json")
+    public ApiResponseBody saveAddress(@RequestBody ApiRequestBody apiRequestBody){
+        return userService.saveAddress(apiRequestBody);
+    }
 
+    @GetMapping(value = "/findUser",produces="application/json")
+    public User findUser(){
+        return userService.findUser("prasadsanap2@gmail.com");
+    }
 }
