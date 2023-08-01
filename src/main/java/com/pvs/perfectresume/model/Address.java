@@ -4,12 +4,11 @@ package com.pvs.perfectresume.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="tb_address")
+@Table(name = "tb_address")
 @Getter
 @Setter
 public class Address {
@@ -26,7 +25,7 @@ public class Address {
     private String addressType;
 
     @OneToOne()
-    @JoinColumn(name="userId")
+    @JoinColumn(name = "userId")
     @JsonIgnore
     private User user;
 }

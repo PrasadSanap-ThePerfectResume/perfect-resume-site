@@ -5,23 +5,20 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
-@Table(name = "tb_otp_validation")
+@Table(name = "tb_skill")
 @Getter
 @Setter
-public class OTPValidation {
+public class Skill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long otpValidationId;
+    private Integer skillId;
 
-    private String username;
-    private String otp;
-    private Timestamp otpGenerateDT;
-    private boolean verify = false;
+    private String skillTitle;
+    private int level;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
     @JsonIgnore
     private User user;

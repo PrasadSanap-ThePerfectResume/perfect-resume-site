@@ -9,13 +9,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PerfectResumeApplication implements CommandLineRunner {
 
-	private Logger logger = LoggerFactory.getLogger(PerfectResumeApplication.class);
-	public static void main(String[] args) {
-		SpringApplication.run(PerfectResumeApplication.class, args);
-	}
+    private Logger logger = LoggerFactory.getLogger(PerfectResumeApplication.class);
 
-	@Override
-	public void run(String... args) throws Exception {
-		logger.info("Application is running");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PerfectResumeApplication.class, args);
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        logger.info("Application is running");
+    }
 }

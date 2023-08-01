@@ -7,3 +7,19 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: yourusername
+    password: yourpassword
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+schedule:
+  reset-otp: EXPIRED-OTP
+  interval: 2
+  stamp: MINUTE

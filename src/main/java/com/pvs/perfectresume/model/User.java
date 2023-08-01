@@ -1,15 +1,14 @@
 package com.pvs.perfectresume.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name="tb_user")
+@Table(name = "tb_user")
 @Getter
 @Setter
 public class User {
@@ -19,12 +18,26 @@ public class User {
     //User name should be email and its verified by OTP
     private String username;
     private String password;
-
-    @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="user")
-    @JsonIgnore
+    private Timestamp accountCreateDT;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private OTPValidation otpValidation;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy="user")
-    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Address address;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
+    private List<Education> education;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Experience> experience;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Language> language;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Skill> skill;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+    private List<ActivityCertification> activityCertification;
+
 }

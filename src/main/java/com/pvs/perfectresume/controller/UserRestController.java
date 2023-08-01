@@ -16,31 +16,39 @@ public class UserRestController {
     @Autowired
     private UserService userService;
 
+
     @GetMapping("/get")
-    public String get(){
+    public String get() {
         return userService.show();
     }
 
-    @PostMapping(value = "/sendOtp",consumes = "application/json",produces="application/json")
-    public ApiResponseBody sendOtp(@RequestBody User user){
+    @PostMapping(value = "/sendOtp", consumes = "application/json", produces = "application/json")
+    public ApiResponseBody sendOtp(@RequestBody User user) {
         ApiRequestBody requestBody = new ApiRequestBody();
         requestBody.setUser(user);
         return userService.sendOtp(requestBody);
     }
 
-    @PostMapping(value = "/verifyOtp",consumes= "application/json",produces="application/json")
-    public ApiResponseBody verifyOtp(@RequestBody OTPValidation otpValidation){
+    @PostMapping(value = "/verifyOtp", consumes = "application/json", produces = "application/json")
+    public ApiResponseBody verifyOtp(@RequestBody OTPValidation otpValidation) {
         return userService.verifyOtp(otpValidation);
     }
 
+    @GetMapping(value = "/findUser", produces = "application/json")
+    public User findUser() {
+        return userService.findUser("prasadsanap2@gmail.com");
+    }
 
-    @PostMapping(value = "/address",consumes= "application/json",produces="application/json")
-    public ApiResponseBody saveAddress(@RequestBody ApiRequestBody apiRequestBody){
+    @PostMapping(value = "/create", consumes = "application/json", produces = "application/json")
+    public ApiResponseBody saveUser(@RequestBody ApiRequestBody apiRequestBody) {
+        return userService.saveUser(apiRequestBody);
+    }
+
+
+    @PostMapping(value = "/address", consumes = "application/json", produces = "application/json")
+    public ApiResponseBody saveAddress(@RequestBody ApiRequestBody apiRequestBody) {
         return userService.saveAddress(apiRequestBody);
     }
 
-    @GetMapping(value = "/findUser",produces="application/json")
-    public User findUser(){
-        return userService.findUser("prasadsanap2@gmail.com");
-    }
+
 }

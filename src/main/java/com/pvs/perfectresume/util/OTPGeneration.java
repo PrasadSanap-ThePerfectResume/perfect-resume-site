@@ -3,11 +3,11 @@ package com.pvs.perfectresume.util;
 import java.util.Random;
 
 public class OTPGeneration {
-    public static int getOTP(){
+    public static int getOTP() {
         Random random = new Random();
-        int randomNumber= random.nextInt(999999);
-        while(randomNumber<99999)
-            randomNumber=random.nextInt(999999);
+        int randomNumber = random.nextInt(999999);
+        while (randomNumber < 99999)
+            randomNumber = random.nextInt(999999);
         return randomNumber;
     }
 }
