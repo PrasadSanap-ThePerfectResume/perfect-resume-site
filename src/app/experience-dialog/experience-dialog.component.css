@@ -1,0 +1,35 @@
+.example-full-width {
+    width: 100%;
+}
+.example-half-width {
+    width: 50%;
+}
+
+.dialog-content {
+    max-height: 600px;
+    max-width: 100%;
+    /* Set a max height for the content */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+}
+p.logo {
+    width: 100%;
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}
+
+
+button.title {
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}

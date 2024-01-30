@@ -1,0 +1,22 @@
+
+.example-spacer{
+    flex:1 1 auto
+}
+.example-button-row button{
+    margin-left: 0.3rem;
+}
+
+.brand-logo {
+    letter-spacing: 0.5px; /* Adjusted font size for mobile devices */
+}
+  
+.custom-button{
+    text-align: left;
+}
+@media screen and (max-width: 450px) {
+    .brand-logo {
+      font-size: 14px;
+      letter-spacing: 0.5px; /* Adjusted font size for mobile devices */
+    }
+    
+}

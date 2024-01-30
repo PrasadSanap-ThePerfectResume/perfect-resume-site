@@ -1,0 +1,20 @@
+.example-full-width{
+    width: 100%;
+}
+.txt-or{
+    text-align: center;
+    margin: 5% 0% 5% 0%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+button[disabled] {
+    width: 100%;
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}

@@ -1,0 +1,212 @@
+<div mat-dialog-content class="dialog-content container">
+    <div class=" center-text">
+        <p class="logo mt-4 mb-4 text-center">
+            UPDATE YOUR EXPEREINCE
+
+        </p>
+    </div>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput maxlength="35" placeholder="Title" type="text" [(ngModel)]="data.title" required>
+            <mat-hint>{{titleHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Company Name</mat-label>
+            <input matInput maxlength="35" placeholder="Company Name" type="text"  [(ngModel)]="data.companyName" required>
+            <mat-hint>{{companyNameHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Select Employment Type</mat-label>
+            <mat-select [(ngModel)]="data.employmentType">
+                <mat-option *ngFor="let employmentType of employmentTypeList" [value]="employmentType.value" >
+                    {{ employmentType.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>{{employmentTypeHint}}</mat-hint>
+        </mat-form-field>
+        <div class="">
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Select Month</mat-label>
+                <mat-select  [(ngModel)]="data.startMonth">
+                    <mat-option *ngFor="let month of monthList" [value]="month.value">
+                        {{ month.viewValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{startMonthHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Select Year</mat-label>
+                <mat-select  [(ngModel)]="data.startYear">
+                    <mat-option *ngFor="let year of years" [value]="year">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{startYearHint}}</mat-hint>
+            </mat-form-field>
+            <div>
+                <p>TO</p>
+            </div>
+
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>End Month</mat-label>
+                <mat-select  [(ngModel)]="data.endMonth">
+                    <mat-option *ngFor="let month of monthList" [value]="month.value">
+                        {{ month.viewValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{endMonthHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Select Year</mat-label>
+                <mat-select  [(ngModel)]="data.endYear">
+                    <mat-option *ngFor="let year of years" [value]="year">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{endYearHint}}</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Company Location</mat-label>
+            <input matInput maxlength="35" placeholder="Company Location" type="text"  [(ngModel)]="data.location" required>
+            <mat-hint>{{locationNameHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Working Mode</mat-label>
+            <mat-select  [(ngModel)]="data.workingMode">
+                <mat-option *ngFor="let workingMode of workingModeList" [value]="workingMode.value">
+                    {{ workingMode.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>{{workingModeHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Skill</mat-label>
+            <textarea matInput maxlength="100" placeholder="Write skills with comma separated" type="text"
+                 [(ngModel)]="data.skills"></textarea>
+            <mat-hint>{{skillHint}}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput maxlength="200" placeholder="Write description about your work" type="text"
+                 [(ngModel)]="data.description"></textarea>
+            <mat-hint>{{descriptionHint}}</mat-hint>
+        </mat-form-field>
+
+        <div class="">
+            <p>
+                <button mat-button class="title">
+                    PROJECTS
+                </button>
+            </p>
+        </div>
+        <form class="example-form" [formGroup]="projectForm">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Project Name</mat-label>
+                <input matInput maxlength="35" placeholder="Project Name" type="text" formControlName="projectTitle"
+                    required>
+                <mat-hint>{{projectTitleHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Front End Tech</mat-label>
+                <input matInput maxlength="35" placeholder="Front End Tech" type="text" formControlName="frontEndTech"
+                    required>
+                <mat-hint>{{frontEndTechHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Back End Tech</mat-label>
+                <input matInput maxlength="35" placeholder="Back End Tech" type="text" formControlName="backEndTech"
+                    required>
+                <mat-hint>{{backEndTechHint}}</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="example-full-width" (click)="onSubmitProject()" matSuffix
+                matTooltip="Click to add your project"><mat-icon>add</mat-icon></button>
+
+            <!-- Show Experience Here -->
+            <div class=" mb-4 mt-4">
+                <table class="mat-elevation-z8 table">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Project</th>
+                            <th>Front End</th>
+                            <th>Back End</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data.projects;let i=index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ item.projectTitle }}</td>
+                            <td>{{ item.frontEndTech }}</td>
+                            <td>{{ item.backEndTech }}</td>
+                            <td>
+                                <mat-icon (click)="removeProjectItem(item.projectTitle)" color="warn">delete</mat-icon>
+                            </td>
+                            <!-- Display other item properties in corresponding columns -->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </form>
+
+
+        <!--  -->
+        <div class="">
+            <p>
+                <button mat-button class="title">
+                    ACHIVEMENTS
+                </button>
+
+            </p>
+        </div>
+
+        <form class="example-form" [formGroup]="achievementForm">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Achievement Description</mat-label>
+                <input matInput maxlength="100" placeholder="Achievement Description" type="text"
+                    formControlName="achievement" required>
+                <mat-hint>{{achievementHint}}</mat-hint>
+                <!-- <mat-icon matSuffix (click)="onSubmitAchievement()" color="primary">add</mat-icon> -->
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="example-full-width" (click)="onSubmitAchievement()"
+                matSuffix matTooltip="Click to add your achievement"><mat-icon>add</mat-icon></button>
+
+
+            <!-- Show achivement here... -->
+            <div class=" mb-4 mt-3">
+                <table class="mat-elevation-z8 table">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th colspan="2">Achivement</th>
+                            <th>Option</th>
+                            <!-- Add more table headings as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of data.achievements;let i=index">
+                            <td>{{ i+1 }}</td>
+                            <td colspan="2">{{ item.achievement }}</td>
+                            <td>
+                                <mat-icon (click)="removeAchivementItem(item.achievement)"
+                                    color="warn">delete</mat-icon>
+                            </td>
+                            <!-- Display other item properties in corresponding columns -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+        <div mat-dialog-actions>
+            <button mat-raised-button color="primary" class="devider example-full-width" (click)="onUpdateClick(data)"
+                matTooltip="Click to update your experience">Update Experience</button>
+            <button mat-raised-button color="warn" class="devider example-full-width" (click)="onCloseClick()"
+                matTooltip="Click to close window">Close</button>
+        </div>
+
+</div>

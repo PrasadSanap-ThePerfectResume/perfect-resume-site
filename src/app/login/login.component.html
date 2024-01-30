@@ -1,0 +1,41 @@
+<div class="container">
+  <div>
+    <div class="container">
+      <p>
+        <button mat-button class="logo" disabled>
+          LOGIN TO YOUR ACCOUNT
+        </button>
+      </p>
+    </div>
+
+    <form class="example-form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" type="email" formControlName="username" required>
+        <mat-hint>{{emailHint}}</mat-hint>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" type="password" [type]="hide ? 'password' : 'text'"
+          formControlName="password" required>
+        <mat-hint>{{passwordHint}}</mat-hint>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+
+      <a href="forget" mat-button color="primary" style="margin-bottom:5% ;">Forget password?</a>
+      <button mat-raised-button color="primary" class="example-full-width" type="submit">Login</button>
+    </form>
+    <hr style="margin-bottom: 30px;">
+    <div class="txt-or">
+        <p class="txt-or">OR</p>
+    </div>
+    <hr>
+    
+
+    <button mat-raised-button color="primary" routerLink="/signup" class="example-full-width">Create New
+      Account</button>
+
+  </div>
+
+</div>

@@ -1,0 +1,18 @@
+.my-class{
+    display: none;
+}
+
+.example-full-width{
+    width: 100%;
+}
+
+h1.logo {
+    width: 100%;
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}

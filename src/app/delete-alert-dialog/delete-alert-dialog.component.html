@@ -1,0 +1,13 @@
+<form >
+    
+    <div mat-dialog-title class="text-center">
+        <mat-icon color="warn" >warning</mat-icon>
+        <hr>
+        <p>Please confirm to delete this {{fieldName}} ?</p>
+        <hr>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="deleteCurrent(true)">Yes</button>
+        <button mat-raised-button  color="warn"(click)="closeDeletePopUp(false)">No</button>
+    </div>
+</form>

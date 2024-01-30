@@ -1,0 +1,31 @@
+<form [formGroup]="mySkillForm">
+
+    <h1 mat-dialog-title class="logo mt-4 mb-4 text-center">{{ headerTitleText}} YOUR SKILL</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="outline">
+            <mat-label>Language</mat-label>
+            <input formControlName="skillTitle"  matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Select Level</mat-label>
+            <mat-select formControlName="level">
+                <mat-option *ngFor="let level of levels" [value]="level.value" >
+                    {{ level.viewValue }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="openSkillUpdateAlertPopUp()" [class.my-class]="isUpdateButtonShow" >Update</button>
+        <button mat-raised-button color="primary" (click)="createNewSkillData()" [class.my-class]="isSaveButtonShow">Save</button>
+        <button mat-raised-button  color="warn" (click)="closeSkillPopUp()">Close</button>
+        <!-- <button mat-button (click)="closeSkillPopUp()" color="accent">Cancel</button> -->
+    </div>
+</form>
+
+
+
+<!--
+mat-dialog-close - this method close your pop up directly
+
+-->

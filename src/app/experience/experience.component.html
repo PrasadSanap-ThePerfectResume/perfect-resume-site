@@ -1,0 +1,326 @@
+<div class="container">
+    
+    <div class="container center-text">
+        <p>
+            <button mat-button class="logo">
+                ADD NEW EXPEREINCE
+            </button>
+        </p>
+    </div>
+
+
+    <form class="example-form" [formGroup]="experienceForm">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Title</mat-label>
+            <input matInput maxlength="35" placeholder="Title" type="text" formControlName="title" required>
+            <mat-hint>{{titleHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Company Name</mat-label>
+            <input matInput maxlength="35" placeholder="Company Name" type="text" formControlName="companyName"
+                required>
+            <mat-hint>{{companyNameHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Select Employment Type</mat-label>
+            <mat-select formControlName="employmentType">
+                <mat-option *ngFor="let employmentType of employmentTypeList" [value]="employmentType.value">
+                    {{ employmentType.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>{{employmentTypeHint}}</mat-hint>
+        </mat-form-field>
+        <div class="container">
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Select Month</mat-label>
+                <mat-select formControlName="startMonth">
+                    <mat-option *ngFor="let month of monthList" [value]="month.value">
+                        {{ month.viewValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{startMonthHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Select Year</mat-label>
+                <mat-select formControlName="startYear">
+                    <mat-option *ngFor="let year of years" [value]="year">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{startYearHint}}</mat-hint>
+            </mat-form-field>
+            <div>
+                <p>TO</p>
+            </div>
+
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>End Month</mat-label>
+                <mat-select formControlName="endMonth">
+                    <mat-option *ngFor="let month of monthList" [value]="month.value">
+                        {{ month.viewValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{endMonthHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-half-width">
+                <mat-label>Select Year</mat-label>
+                <mat-select formControlName="endYear">
+                    <mat-option *ngFor="let year of years" [value]="year">
+                        {{ year }}
+                    </mat-option>
+                </mat-select>
+                <mat-hint>{{endYearHint}}</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Company Location</mat-label>
+            <input matInput maxlength="35" placeholder="Company Location" type="text" formControlName="location"
+                required>
+            <mat-hint>{{locationNameHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Working Mode</mat-label>
+            <mat-select formControlName="workingMode">
+                <mat-option *ngFor="let workingMode of workingModeList" [value]="workingMode.value">
+                    {{ workingMode.viewValue }}
+                </mat-option>
+            </mat-select>
+            <mat-hint>{{workingModeHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Skill</mat-label>
+            <textarea matInput maxlength="100" placeholder="Write skills with comma separated" type="text"
+                formControlName="skills"></textarea>
+            <mat-hint>{{skillHint}}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput maxlength="200" placeholder="Write description about your work" type="text"
+                formControlName="description"></textarea>
+            <mat-hint>{{descriptionHint}}</mat-hint>
+        </mat-form-field>
+
+
+
+
+        <!-- <form class="example-form" [formGroup]="projectForm">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Project Name</mat-label>
+            <input matInput maxlength="35" placeholder="Project Name" type="text" formControlName="projectTitle"
+                required>
+            <mat-hint>{{projectTitleHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Front End Tech</mat-label>
+            <input matInput maxlength="35" placeholder="Front End Tech" type="text" formControlName="frontEndTech"
+                required>
+            <mat-hint>{{frontEndTechHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Back End Tech</mat-label>
+            <input matInput maxlength="35" placeholder="Back End Tech" type="text" formControlName="backEndTech"
+                required>
+            <mat-hint>{{backEndTechHint}}</mat-hint>
+        </mat-form-field>  -->
+        <div class="container">
+            <p>
+                <button mat-button class="title">
+                    PROJECTS
+                </button>
+            </p>
+        </div>
+        <form class="example-form" [formGroup]="projectForm">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Project Name</mat-label>
+                <input matInput maxlength="35" placeholder="Project Name" type="text" formControlName="projectTitle"
+                 required>
+                <mat-hint>{{projectTitleHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Front End Tech</mat-label>
+                <input matInput maxlength="35" placeholder="Front End Tech" type="text" formControlName="frontEndTech"
+                required>
+                <mat-hint>{{frontEndTechHint}}</mat-hint>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Back End Tech</mat-label>
+                <input matInput maxlength="35" placeholder="Back End Tech" type="text" formControlName="backEndTech"
+                 required>
+                <mat-hint>{{backEndTechHint}}</mat-hint>
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="example-full-width" (click)="onSubmitProject()"
+                matSuffix matTooltip="Click to add your project"><mat-icon>add</mat-icon></button>
+
+            <!-- Show Experience Here -->
+            <div class="container mb-4 mt-4">
+                <table class="mat-elevation-z8 table">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th>Project</th>
+                            <th>Front End</th>
+                            <th>Back End</th>
+                            <th>Option</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of projectList;let i=index">
+                            <td>{{ i+1 }}</td>
+                            <td>{{ item.projectTitle }}</td>
+                            <td>{{ item.frontEndTech }}</td>
+                            <td>{{ item.backEndTech }}</td>
+                            <td>
+                                <mat-icon (click)="removeProjectItem(item.projectTitle)" color="warn">delete</mat-icon>
+                            </td>
+                            <!-- Display other item properties in corresponding columns -->
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </form>
+
+        <!-- <form [formGroup]="projectForm">
+            <div formArrayName="projects">
+                <div *ngFor="let project of projects.controls; let i = index" class="projects-group">
+                    <h3>Projects {{ i + 1 }}</h3>
+                    <div [formGroupName]="i">
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Project Name</mat-label>
+                            <input matInput maxlength="50" placeholder="Project Name" type="text"
+                                formControlName="projectTitle" required>
+                            <mat-hint>{{projectTitleHint}} </mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Front End Tech</mat-label>
+                            <input matInput maxlength="65" placeholder="Front End Tech" type="text"
+                                formControlName="frontEndTech" required>
+                            <mat-hint>{{frontEndTechHint}}</mat-hint>
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="example-full-width">
+                            <mat-label>Back End Tech</mat-label>
+                            <input matInput maxlength="65" placeholder="Back End Tech" type="text"
+                                formControlName="backEndTech" required>
+                            <mat-hint>{{backEndTechHint}}</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </form> -->
+
+
+        <!--  -->
+        <div class="container">
+            <p>
+                <button mat-button class="title">
+                    ACHIVEMENTS
+                </button>
+
+            </p>
+        </div>
+
+        <form class="example-form" [formGroup]="achievementForm">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Achievement Description</mat-label>
+                <input matInput maxlength="100" placeholder="Achievement Description" type="text"
+                    formControlName="achievement" required>
+                <mat-hint>{{achievementHint}}</mat-hint>
+                <!-- <mat-icon matSuffix (click)="onSubmitAchievement()" color="primary">add</mat-icon> -->
+            </mat-form-field>
+            <button mat-raised-button color="primary" class="example-full-width" (click)="onSubmitAchievement()"
+            matSuffix matTooltip="Click to add your achievement"><mat-icon>add</mat-icon></button>
+
+
+            <!-- Show achivement here... -->
+            <div class="container mb-4 mt-3">
+                <table class="mat-elevation-z8 table">
+                    <thead>
+                        <tr>
+                            <th>Index</th>
+                            <th colspan="2">Achivement</th>
+                            <th>Option</th>
+                            <!-- Add more table headings as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of achivementList;let i=index">
+                            <td>{{ i+1 }}</td>
+                            <td colspan="2">{{ item.achievement }}</td>
+                            <td>
+                                <mat-icon (click)="removeAchivementItem(item.achievement)"
+                                    color="warn">delete</mat-icon>
+                            </td>
+                            <!-- Display other item properties in corresponding columns -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+        <button mat-raised-button color="primary" class="devider example-full-width"
+            (click)="saveExperience()" matTooltip="Click to save your experience" >Save Experience</button>
+
+    </form>
+
+
+
+    <div class="mt-2">
+        <div class="container">
+            <p>
+                <button mat-button class="title example-full-width">
+                    YOUR ALL EXPEREINCES
+                </button>
+            </p>
+        </div>
+        <div class="example-full-width">
+
+            <mat-accordion>
+                <ng-container *ngFor="let experience of experienceList; let i = index">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                {{experience.startMonth}} {{experience.startYear}}-{{experience.endMonth}} {{experience.endYear}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                {{experience.title}} at {{experience.companyName}}
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        Achievements:
+                        <hr>
+                        <ul>
+                            <ng-container *ngFor="let achievement of experience.achievements;">
+                                <li>{{achievement.achievement}}</li>
+                            </ng-container>
+                        </ul>
+                        Projects:
+                        <hr>
+                        <ul>
+                            <ng-container *ngFor="let project of experience.projects;">
+
+                                <li>
+                                    <b>Project Title - {{project.projectTitle}}</b>
+                                    <ul>
+                                        <li>Front End - {{project.frontEndTech}}</li>
+                                        <li>Back End - {{project.backEndTech}}</li>
+                                    </ul>
+                                </li>
+
+                            </ng-container>
+                        </ul>
+
+                        <div class="example-button-row ">
+                            <button mat-raised-button class="example-half-width" color="primary"><mat-icon
+                                    mat-raised-button matSuffix class="example-half-width">edit</mat-icon></button>
+                            <button mat-raised-button class="example-half-width" color="warn"><mat-icon
+                                    mat-raised-button matSuffix class="example-half-width">delete</mat-icon></button>
+                        </div>
+
+                    </mat-expansion-panel>
+                </ng-container>
+            </mat-accordion>
+        </div>
+
+    </div>
+</div>

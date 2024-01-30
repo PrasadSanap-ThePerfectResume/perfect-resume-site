@@ -1,0 +1,33 @@
+.example-full-width{
+    width: 100%;
+}
+button.logo {
+    width: 100%;
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}
+
+button.title {
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}
+
+
+.date-row{
+    display:flex;
+  
+}
+
+.example-half-width{
+    width: 50%;
+}

@@ -1,0 +1,10 @@
+.example-full-width{
+    width: 100%;
+    border: 1px solid  #f7007c;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    align-self: center;
+}

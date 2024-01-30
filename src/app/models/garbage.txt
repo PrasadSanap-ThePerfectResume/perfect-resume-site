@@ -1,0 +1,633 @@
+createAccount() {
+    if (this.user.password.includes(' ')) {
+      alert("Password doesn't contains any space...!");
+      return;
+    }
+
+    // if (this.user.password.length <= 8) {
+    //   alert("Password length to short.");
+    //   return;
+    // }
+    if (this.user.password == this.confirmPassword) {
+      alert("Account created");
+      //Todo: Save details into db here...
+      // this.sharedDataService.setMessage(this.user.password)
+      // this.sharedDataService.setUser(this.user)
+      this.router.navigate(['home',this.user.username]);
+      return;
+    }
+    alert("Please enter same password");
+  }
+  verifyOtp() {
+    if (this.user.username.length == 0) {
+      this.emailError = "Email should not be empty...!"
+      return;
+    }
+
+    if (this.varificationOTP.length==0) {
+      const length=this.varificationOTP.length;
+      alert( "OTP should not be empty...!"+length)
+      this.sendOtpButton = false;
+      return;
+    }
+    if (this.varificationOTP.length<6) {
+      const length=this.varificationOTP.length;
+      alert( "Please enter six digit OTP...!"+length)
+      this.sendOtpButton = false;
+      return;
+    }
+
+    if (this.varificationOTP != "123456") {
+      alert("Wrong OTP.");
+      this.sendOtpButton = false;
+      return;
+    }
+
+    if (this.varificationOTP == "123456") {
+      alert("OTP varified");
+      this.disable = false;
+      return;
+    }
+    alert("Please provide valid OTP ")
+  }
+
+  openLoginPage(pageName:string):void {
+    this.router.navigate([`${pageName}`]);
+    return;
+  }
+  openLandingPage(){
+    this.router.navigate(['']);
+    return
+  }
+
+  
+  sendOtp(){
+    alert("OTP Send")
+    this.sendOtpButton=true
+  }
+  openPage(){
+    this.router.navigate(["home","Prasad Sanap"]);
+    return;
+  }
+
+  <span><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"
+                    routerLink="/home"></mat-icon></span>
+
+                    <!-- <nav class="navbar" style="background-color: #e3f2fd;">
+        <span class="nav-item badge badge-secondary" style="color: #000000;">{{BrandName}}</span>
+        <span class="nav-item"><button mat-button routerLink="/login"
+                class="border-radius"><mat-icon>home</mat-icon>Home</button></span>
+        <span class="nav-item"><button mat-button routerLink="/login" class="border-radius">Template</button></span>
+        <span class="nav-item"><button mat-button routerLink="/login" class="border-radius">Login</button></span>
+        <span class="nav-item"><button mat-button routerLink="/login" class="border-radius">Sign up</button></span>
+        <span class="nav-item"><button mat-button routerLink="/login"
+                class="border-radius"><mat-icon>account_circle</mat-icon>Profile</button></span>
+    </nav>
+<mat-toolbar-row>
+            <span class="nav-item badge badge-secondary primary">{{BrandName}}</span>
+            <span class="example-spacer"><button mat-button color="primary" routerLink="/home"
+                    class="border-radius"><mat-icon>home</mat-icon>Home</button></span>
+            <span class="example-spacer"><button mat-button color="primary" routerLink="/template"
+                    class="border-radius">Templates</button></span>
+            <span class="example-spacer"><button mat-button color="primary" routerLink="/login"
+                    class="border-radius">Login</button></span>
+            <span class="example-spacer"><button mat-button color="primary" routerLink="/signup"
+                    class="border-radius">Sign up</button></span>
+            <span class="example-spacer btn-profile"><button mat-button color="primary" routerLink="/profile"
+                    class="border-radius"><mat-icon>account_circle</mat-icon></button></span> 
+
+        </mat-toolbar-row>
+
+-->
+
+
+
+{
+    "id": 1,
+    "firstname": "Prasad",
+    "lastname": "NULL",
+    "username": "prasadsanap2@gmail.com",
+    "password": "Prsad@123",
+    "accountCreateDT": "2023-07-30T09:49:23.000+00:00",
+    "otpValidation": {
+        "otpValidationId": 2,
+        "username": "prasadsanap2@gmail.com",
+        "otp": "EXPIRED-OTP",
+        "otpGenerateDT": "2023-07-30T09:49:02.000+00:00",
+        "verify": true
+    },
+    "address": {
+        "addressId": 7,
+        "pin": "422103",
+        "town": "Jamgoan",
+        "city": "Sinnar",
+        "district": "Nashik",
+        "state": "Maharashtra",
+        "country": "India",
+        "addressType": "Permanent"
+    },
+    "education": [
+        {
+            "educationId": 11,
+            "university": "Savitribai Phule Pune University",
+            "college": "ZIBACAR Institute Pune",
+            "stream": "Master Of Computer Application(MCA)",
+            "startYear": "2018",
+            "endYear": "2020",
+            "startMonth": "June",
+            "endMonth": "June",
+            "mark": "85%",
+            "educationType": "Fulltime"
+        }
+    ],
+    "experience": [
+        {
+            "experienceId": 17,
+            "title": "Junior Software Enginner",
+            "employmentType": "Permanent",
+            "companyName": "Giesecke+Dev",
+            "location": "Erandwane, Pune",
+            "locationType": "Hybrid",
+            "startMonth": "Feb",
+            "startYear": "2022",
+            "endYear": "2023",
+            "endMonth": "March",
+            "skills": "Java,Angular,SQL,HTML",
+            "description": "Working as a Junior Software Enginner. Having very good handson knowledge about Spring Framework",
+            "achievements": [
+                {
+                    "achievementId": 41,
+                    "achievement": "Give the delevery on time"
+                },
+                {
+                    "achievementId": 42,
+                    "achievement": "Team Player"
+                },
+                {
+                    "achievementId": 43,
+                    "achievement": "Can do attitude"
+                },
+                {
+                    "achievementId": 44,
+                    "achievement": "Ready to work any time"
+                },
+                {
+                    "achievementId": 45,
+                    "achievement": "Give update in daily SRUM meeting"
+                }
+            ],
+            "project": [
+                {
+                    "projectId": 46,
+                    "projectTitle": "Notification Service Gateway(NSG)",
+                    "frontEndTech": "Anguar,HTML,CSS",
+                    "backEndTech": "Java, Spring-Boot"
+                },
+                 {
+                    "projectId": 48,
+                    "projectTitle": "Notification Service Gateway(NSG)",
+                    "frontEndTech": "Anguar,HTML,CSS",
+                    "backEndTech": "Java, Spring-Boot"
+                },
+                 {
+                    "projectId": 49,
+                    "projectTitle": "Notification Service Gateway(NSG)",
+                    "frontEndTech": "Anguar,HTML,CSS",
+                    "backEndTech": "Java, Spring-Boot"
+                }
+            ]
+        },
+        {
+            "experienceId": 21,
+            "title": "Junior Software Enginner",
+            "employmentType": "Permanent",
+            "companyName": "Giesecke+Dev",
+            "location": "Erandwane, Pune",
+            "locationType": "Hybrid",
+            "startMonth": "Feb",
+            "startYear": "2022",
+            "endYear": "2023",
+            "endMonth": "March",
+            "skills": "Java,Angular,SQL,HTML",
+            "description": "Working as a Junior Software Enginner. Having very good handson knowledge about Spring Framework",
+            "achievements": [
+                {
+                    "achievementId": 22,
+                    "achievement": "Give the delevery on time"
+                },
+                {
+                    "achievementId": 23,
+                    "achievement": "Team Player"
+                },
+                {
+                    "achievementId": 24,
+                    "achievement": "Can do attitude"
+                },
+                {
+                    "achievementId": 51,
+                    "achievement": "Give update in daily SRUM meeting"
+                }
+            ],
+            "project": [
+                {
+                    "projectId": 47,
+                    "projectTitle": "Card Status & Event Subsription",
+                    "frontEndTech": "HTML,CSS",
+                    "backEndTech": "Java, Spring-Boot"
+                }
+            ]
+        }
+    ],
+    "language": [
+        {
+            "languageId": 31,
+            "langTitle": "Marathi",
+            "level": 80
+        },
+        {
+            "languageId": 32,
+            "langTitle": "English",
+            "level": 70
+        },
+        {
+            "languageId": 33,
+            "langTitle": "Hindi",
+            "level": 80
+        },
+        {
+            "languageId": 48,
+            "langTitle": "Tamil",
+            "level": 80
+        },
+        {
+            "languageId": 49,
+            "langTitle": "French",
+            "level": 80
+        },
+        {
+            "languageId": 50,
+            "langTitle": "China",
+            "level": 10
+        }
+    ],
+    "skill": [
+        {
+            "skillId": 34,
+            "skillTitle": "Java",
+            "level": 60
+        },
+        {
+            "skillId": 35,
+            "skillTitle": "HTML",
+            "level": 70
+        },
+        {
+            "skillId": 36,
+            "skillTitle": "Angular",
+            "level": 50
+        },
+        {
+            "skillId": 37,
+            "skillTitle": "SQL",
+            "level": 80
+        }
+    ],
+    "activityCertification": [
+        {
+            "actCerId": 38,
+            "actCerTitle": "Java Certification"
+        },
+        {
+            "actCerId": 39,
+            "actCerTitle": "HTML Certification"
+        },
+        {
+            "actCerId": 40,
+            "actCerTitle": "Tally Certification"
+        }
+    ]
+}
+
+
+
+  <div class="container mb-2">
+            <button mat-raised-button color="primary" class="devider example-half-width" (click)="onSubmitAchievement()"><mat-icon>add</mat-icon></button>
+        </div>
+
+
+                <div>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Select Start Date</mat-label>
+                <input matInput [matDatepicker]="pickerStart" formControlName="startDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerStart"></mat-datepicker-toggle>
+                <mat-datepicker #pickerStart startView="multi-year"></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <p>TO</p>
+        </div>
+        <div>
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>Select End Date</mat-label>
+                <input matInput [matDatepicker]="pickerEnd">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="pickerEnd"></mat-datepicker-toggle>
+                <mat-datepicker #pickerEnd startView="multi-year"></mat-datepicker>
+            </mat-form-field>
+        </div>
+</div>
+
+
+
+<div class="container">
+
+    <mat-drawer-container class="example-container">
+        <mat-drawer mode="side" #drawer opened="false">
+            <button type="button" (click)="drawerHide()" mat-button (click)="drawer.toggle()" color="accent">
+                <!-- <button type="button" (click)="drawerHide()" mat-button color="accent"> -->
+                <mat-icon>account_circle</mat-icon>PrasadSanap
+            </button>
+            <mat-nav-list (click)="drawer.toggle()">
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[0])"><mat-icon>school</mat-icon>Education</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[1])"><mat-icon>work</mat-icon>Experience</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[2])"><mat-icon>my_location</mat-icon>Address</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[3])"><mat-icon>stars</mat-icon>Skills</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[4])"><mat-icon>language</mat-icon>Languages</button>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-content style="height: 750px;">
+
+            <div class="container example-sidenav-content">
+                <button type="button" mat-stroked-button (click)="showDrawer()" (click)="drawer.toggle()"
+                    color="primary" class="example-full-width">
+                    Click Here Show Menu<mat-icon matSuffix>{{arrowIcon}}</mat-icon> <mat-icon>menu</mat-icon>
+                </button>
+
+
+            </div>
+
+
+            <!-- <button type="button" (click)="drawerHide()" mat-stroked-button color="primary" class="example-full-width">
+                <mat-icon>menu</mat-icon>Click Here Show All
+            </button> -->
+
+            <!-- EDUCATION SECTION -->
+            <div [class.my-class]="isEducationClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[0].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <button mat-button>EDUCATION</button>
+                    <mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+                        <input matSliderThumb>
+                    </mat-slider>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button class="green">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[0].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- EXPEREINCE SECTION -->
+            <div [class.my-class]="isExpereinceClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[1].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container mt-2 mb-3">
+                    <div class="mt-2">
+                        <div class="container">
+                            <p>
+                                <button mat-button class="title example-full-width">
+                                    YOUR ALL EXPEREINCES
+                                </button>
+                            </p>
+                        </div>
+                        <div class="example-full-width">
+                            <mat-accordion>
+                                <ng-container *ngFor="let experience of experienceList; let i = index">
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                {{experience.startMonth}}
+                                                {{experience.startYear}}-{{experience.endMonth}} {{experience.endYear}}
+                                            </mat-panel-title>
+                                            <mat-panel-description>
+                                                {{experience.title}} at {{experience.companyName}}
+                                                ({{experience.employmentType}})
+                                            </mat-panel-description>
+                                        </mat-expansion-panel-header>
+
+                                        <h4>Achievements:</h4>
+                                        <hr>
+                                        <ul>
+                                            <ng-container *ngFor="let achievement of experience.achievements;">
+                                                <li>{{achievement.achievement}}</li>
+                                            </ng-container>
+                                        </ul>
+                                        <h4>Projects:</h4>
+                                        <hr>
+                                        <ul>
+                                            <ng-container *ngFor="let project of experience.projects;">
+
+                                                <li>
+                                                    <b>Project Title - {{project.projectTitle}}</b>
+                                                    <ul>
+                                                        <li>Front End - {{project.frontEndTech}}</li>
+                                                        <li>Back End - {{project.backEndTech}}</li>
+                                                    </ul>
+                                                </li>
+
+                                            </ng-container>
+                                        </ul>
+
+                                        <div class="example-button-row ">
+                                            <button mat-raised-button class="example-half-width" color="primary"
+                                                (click)="openDialog(experience)"><mat-icon
+                                                    matSuffix>edit</mat-icon></button>
+                                            <button mat-raised-button class="example-half-width" color="warn"><mat-icon
+                                                    matSuffix>delete</mat-icon></button>
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </ng-container>
+                            </mat-accordion>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button class="green" routerLink="/experience">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[1].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- ADDRESS SECTION -->
+            <div [class.my-class]="isAddressClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="container mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[2].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container mt-2">
+
+                    <button mat-button>ADDRESS</button>
+                </div>
+
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button class="green">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[2].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- SKILLS SECTION -->
+            <div [class.my-class]="isSkillClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="container mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[3].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container mt-2">
+                    <hr>
+                    <mat-accordion>
+                        <ng-container *ngFor="let skill of skills; let i = index">
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{skill.skillTitle}}
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        {{skill.level}}%
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <div class="example-button-row ">
+                                    <button mat-raised-button class="example-half-width" color="primary"><mat-icon
+                                            matSuffix>edit</mat-icon></button>
+                                    <button mat-raised-button class="example-half-width" color="warn"><mat-icon
+                                            matSuffix>delete</mat-icon></button>
+                                </div>
+
+                            </mat-expansion-panel>
+                        </ng-container>
+                    </mat-accordion>
+                    <hr>
+                    <ng-container *ngFor="let skill of skills; let i = index">
+                        <mat-grid-list cols="8" rowHeight="25px">
+
+                            <mat-grid-tile [colspan]="4">
+                                <p>{{skill.skillTitle}}({{skill.level}}%/100)</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="4">
+                                <mat-progress-bar mode="determinate" value={{skill.level}}></mat-progress-bar>
+                            </mat-grid-tile>
+
+                        </mat-grid-list>
+                        <hr>
+
+                    </ng-container>
+
+
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button class="green">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[3].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- LANGUAGE SECTION -->
+            <div [class.my-class]="isLanguageClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="container mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[4].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="container mt-2">
+                    <hr>
+
+                    <ng-container *ngFor="let language of languages; let i = index">
+                        <mat-grid-list cols="8" rowHeight="25px">
+
+                            <mat-grid-tile [colspan]="4">
+                                <p>{{language.langTitle}}({{language.level}}%/100)</p>
+                            </mat-grid-tile>
+                            <mat-grid-tile [colspan]="4">
+                                <mat-progress-bar mode="determinate" value={{language.level}}></mat-progress-bar>
+                            </mat-grid-tile>
+
+                        </mat-grid-list>
+                        <hr>
+
+                    </ng-container>
+
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button class="green">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[4].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

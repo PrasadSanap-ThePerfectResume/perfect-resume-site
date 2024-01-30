@@ -1,0 +1,65 @@
+<div>
+
+    <div class="sticky-top">
+        <mat-toolbar color="primary" class="mat-elevation-z8">
+            <button (click)="drawer.toggle()" mat-icon-button>
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span class="brand-logo" routerLink="/home">{{BrandName}}</span>
+            
+            <span class="example-spacer"></span>
+            <div class="example-button-row">
+                <button routerLink="/login" mat-stroked-button >Login</button>
+                <button routerLink="/signup" mat-flat-button color="accent">Sign Up</button>
+            </div>
+
+        </mat-toolbar>
+    </div>
+    <mat-drawer-container autosize>
+        <mat-drawer #drawer opened="false" mode="side">
+            <mat-nav-list  >
+                <mat-list-item>
+                    <button mat-button color="primary" (click)="drawer.toggle()" routerLink="/coming-soon" ><mat-icon>dashboard</mat-icon>Bio Data</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary" routerLink="/home" (click)="drawer.toggle()" ><mat-icon>home</mat-icon>Home</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary" routerLink="/profile" (click)="drawer.toggle()"><mat-icon>account_circle</mat-icon>Profile</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary" (click)="drawer.toggle()"><mat-icon>settings</mat-icon>Settings</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button [matMenuTriggerFor]="templates" mat-button color="primary">
+                        Templates
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                    <mat-menu #templates="matMenu">
+                        <mat-nav-list>
+                            <mat-list-item>
+                                <button [matMenuTriggerFor]="science" mat-menu-item color="primary">Science</button>
+                            </mat-list-item>
+                            <mat-list-item>
+                                <button routerLink="home" mat-menu-item>Home</button>
+                            </mat-list-item>
+                        </mat-nav-list>
+
+                    </mat-menu>
+                    <mat-menu #science="matMenu">
+                        <button mat-menu-item color="primary">Fresher</button>
+                        <button mat-menu-item color="primary">Experience</button>
+                        <button mat-menu-item color="primary">All</button>
+                    </mat-menu>
+
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-container style="height: 750px;">
+            <div style="margin-top: 1rem; margin-bottom: 1rem;">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-drawer-container>
+    </mat-drawer-container>
+
+</div>

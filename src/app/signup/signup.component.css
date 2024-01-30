@@ -1,0 +1,43 @@
+.txt-or{
+    text-align: center;
+    margin: -2% 0% 5% 0%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.txt-devider{
+    text-align: center;
+    margin: 5% 0% 5% 0%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.devider{
+    margin: 2% 0% 4% 0%;
+}
+.example-full-width{
+    width: 100%;
+}
+.example-half-width{
+    width: 50%;
+}
+.full-width{
+    width: 100%;
+}
+.txt-center{
+    text-align: center;
+}
+
+.border-red{
+    border:red
+}
+
+button.logo {
+    width: 100%;
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}

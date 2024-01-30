@@ -1,0 +1,29 @@
+<form [formGroup]="myProjectForm">
+
+    <h1 mat-dialog-title class="logo mt-4 mb-4 text-center">{{headerTitleText}} YOUR PROJECT</h1>
+    <div mat-dialog-content class="mt-2">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Project Name</mat-label>
+            <input matInput maxlength="35" placeholder="Project Name" type="text" formControlName="projectTitle"
+                required>
+            <mat-hint>{{projectTitleHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Front End Tech</mat-label>
+            <input matInput maxlength="35" placeholder="Front End Tech" type="text" formControlName="frontEndTech"
+                required>
+            <mat-hint>{{frontEndTechHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Back End Tech</mat-label>
+            <input matInput maxlength="35" placeholder="Back End Tech" type="text" formControlName="backEndTech"
+                required>
+            <mat-hint>{{backEndTechHint}}</mat-hint>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="openProjectUpdateAlertPopUp()" [class.my-class]="isUpdateButtonShow" >Update</button>
+        <button mat-raised-button color="primary" (click)="createNewProjectData()" [class.my-class]="isSaveButtonShow">Save</button>
+        <button mat-raised-button  color="warn" (click)="closeProjectPopUp()">Close</button>
+    </div>
+</form>

@@ -1,0 +1,479 @@
+<div class="container">
+
+    <mat-drawer-container class="example-container">
+        <mat-drawer mode="side" #drawer opened="false">
+            <button type="button" (click)="drawerHide()" mat-button (click)="drawer.toggle()" color="accent">
+                <!-- <button type="button" (click)="drawerHide()" mat-button color="accent"> -->
+                <mat-icon>account_circle</mat-icon>{{user.firstname}} {{user.lastname}}
+            </button>
+            <mat-nav-list (click)="drawer.toggle()">
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[0])"><mat-icon>school</mat-icon>Education</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[1])"><mat-icon>work</mat-icon>Experience</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[2])"><mat-icon>my_location</mat-icon>Address</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[3])"><mat-icon>stars</mat-icon>Skills</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[4])"><mat-icon>language</mat-icon>Languages</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button color="primary"
+                        (click)="showAndHideToggle(toggleItems[5])"><mat-icon>library_books</mat-icon>Activity-Certification</button>
+                </mat-list-item>
+            </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-content style="height: 750px;">
+
+            <div class="container example-sidenav-content">
+                <button type="button" mat-stroked-button (click)="showDrawer()" (click)="drawer.toggle()"
+                    color="primary" class="example-full-width">
+                    Click Here Show Menu<mat-icon matSuffix>{{arrowIcon}}</mat-icon> <mat-icon>menu</mat-icon>
+                </button>
+
+
+            </div>
+
+
+            <!-- <button type="button" (click)="drawerHide()" mat-stroked-button color="primary" class="example-full-width">
+                <mat-icon>menu</mat-icon>Click Here Show All
+            </button> -->
+            <!-- PERSONAL DETAILS SECTION -->
+            <div [class.my-class]="isPersonalDetailsClick">
+                <div class="container mt-3 mb-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                PERSONAL DETAILS
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container p-5">
+                    <h4>
+                        <b>
+                            NAME: {{user.firstname}} {{user.lastname}}
+                            <br>
+                            EMAIL: {{user.username}}
+                            <br>
+                            MOBILE:
+
+                        </b>
+                    </h4>
+                </div>
+                <div class="container mt-2 mb-3">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    <h3><b>Click here to show options</b></h3>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="example-button-row">
+                                <button mat-raised-button class="example-full-width" color="primary"><mat-icon
+                                        matSuffix>edit</mat-icon>Update Profile</button>
+
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+                </div>
+            </div>
+            <!-- EDUCATION SECTION -->
+            <div [class.my-class]="isEducationClick">
+                <div class="container mt-3 ">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[0].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="mt-2 mb-3">
+                        <div class="container">
+                            <p>
+                                <button mat-button class="title example-full-width">
+                                    YOUR ALL {{toggleItems[0].toUpperCase()}}
+                                </button>
+                            </p>
+                        </div>
+                        <div class="example-full-width">
+                            <mat-accordion>
+                                <ng-container *ngFor="let education of educationList; let i = index">
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title *ngIf="education.presentCollege; else elseBlock" >
+                                                {{education.startMonth}}
+                                                {{education.startYear}} - Present
+                                            </mat-panel-title>
+                                            <ng-template #elseBlock>
+                                                <mat-panel-title>
+                                                    {{education.startMonth}}
+                                                    {{education.startYear}} - {{education.endMonth}} {{education.endYear}}
+                                                </mat-panel-title>
+                                            </ng-template>
+                                            <mat-panel-description>
+                                                {{education.stream}} from {{education.college}}
+                                                ({{education.educationMode}})
+                                            </mat-panel-description>
+                                        </mat-expansion-panel-header>
+
+                                        <h4><b>Univercity : {{education.university}}</b></h4>
+                                        <hr>
+                                        <h4><b>Percentage/Grade : {{education.percentage}}</b></h4>
+                                        <hr>
+                                        <div class="example-button-row ">
+                                            <button mat-raised-button class="example-half-width" color="primary"
+                                                (click)="openPopUpUpdateEducation(education)"><mat-icon
+                                                    matSuffix>edit</mat-icon>EDIT</button>
+                                            <button mat-raised-button class="example-half-width" color="warn"
+                                                (click)="openEducationDeleteAlertPopUp(education)"><mat-icon
+                                                    matSuffix>delete</mat-icon>DELETE</button>
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </ng-container>
+                            </mat-accordion>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button color="primary" (click)="openPopUpNewEducation()">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[0].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- EXPEREINCE SECTION -->
+            <div [class.my-class]="isExpereinceClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[1].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container mt-2 mb-3">
+                    <div class="mt-2">
+                        <div class="container">
+                            <p>
+                                <button mat-button class="title example-full-width">
+                                    YOUR ALL EXPEREINCES
+                                </button>
+                            </p>
+                        </div>
+                        <div class="example-full-width">
+                            <mat-accordion>
+                                <ng-container *ngFor="let experience of experienceList; let i = index">
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title *ngIf="experience.presentCompany; else elseBlock">
+                                                {{experience.startMonth}}
+                                                {{experience.startYear}} - Present
+                                            </mat-panel-title>
+                                            <ng-template #elseBlock>
+                                                <mat-panel-title>
+                                                    {{experience.startMonth}}
+                                                    {{experience.startYear}} - {{experience.endMonth}}
+                                                    {{experience.endYear}}
+                                                </mat-panel-title>
+                                            </ng-template>
+                                            <mat-panel-description>
+                                                {{experience.title}} at {{experience.companyName}}
+                                                ({{experience.employmentType}})
+                                            </mat-panel-description>
+                                        </mat-expansion-panel-header>
+
+                                        <h4>Achievements:</h4>
+                                        <hr>
+                                        <ul>
+                                            <ng-container *ngFor="let achievement of experience.achievements;">
+                                                <li>{{achievement.achievement}}</li>
+                                            </ng-container>
+                                        </ul>
+                                        <h4>Projects:</h4>
+                                        <hr>
+                                        <ul>
+                                            <ng-container *ngFor="let project of experience.projects;">
+
+                                                <li>
+                                                    <b>Project Title - {{project.projectTitle}}</b>
+                                                    <ul>
+                                                        <li>Front End - {{project.frontEndTech}}</li>
+                                                        <li>Back End - {{project.backEndTech}}</li>
+                                                    </ul>
+                                                </li>
+
+                                            </ng-container>
+                                        </ul>
+
+                                        <div class="example-button-row ">
+                                            <button mat-raised-button class="example-half-width" color="primary"
+                                                (click)="openPopUpUpdateExperience(experience)"><mat-icon
+                                                    matSuffix>edit</mat-icon>EDIT</button>
+                                            <button mat-raised-button class="example-half-width" color="warn"
+                                                (click)="openExperienceDeleteAlertPopUp(experience)"><mat-icon
+                                                    matSuffix>delete</mat-icon>DELETE</button>
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </ng-container>
+                            </mat-accordion>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button color="primary" (click)="openPopUpNewExperience()">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[1].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- ADDRESS SECTION -->
+            <div [class.my-class]="isAddressClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="container mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[2].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <p>
+                        <button mat-button class="title example-full-width">
+                            YOUR {{toggleItems[2].toUpperCase()}}
+                        </button>
+                    </p>
+                </div>
+                <div class="container mt-2 mb-4" [class.my-class]="isAddressPresent">
+                    <hr>
+                    <mat-accordion>
+                        <ng-container>
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        AT - {{address.town}}, {{address.city}}
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        {{address.district}} - {{address.pin}}, {{address.state}}, {{address.country}}
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <div class="example-button-row ">
+                                    <button mat-raised-button class="example-half-width" color="primary" (click)="openPopUpUpdateAddress(address)"><mat-icon
+                                            matSuffix>edit</mat-icon>
+                                        EDIT</button>
+                                    <button mat-raised-button class="example-half-width" color="warn"><mat-icon
+                                            matSuffix>delete</mat-icon>DELETE</button>
+                                </div>
+
+                            </mat-expansion-panel>
+                        </ng-container>
+                    </mat-accordion>
+                </div>
+
+                <div class="container float-flex" [class.my-class]="isAddressButtonShow">
+                    <button type="button" mat-raised-button color="primary"><mat-icon>add</mat-icon> CREATE
+                        {{toggleItems[2].toUpperCase()}}</button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- SKILLS SECTION -->
+            <div [class.my-class]="isSkillClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="container mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[3].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <p>
+                        <button mat-button class="title example-full-width">
+                            YOUR ALL SKILLS
+                        </button>
+                    </p>
+                </div>
+                <div class="container mt-2 mb-4">
+                    <hr>
+                    <mat-accordion>
+                        <ng-container *ngFor="let skill of skills; let i = index">
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{i+1}}) {{skill.skillTitle}}
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        {{skill.level}}
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <div class="example-button-row ">
+                                    <button mat-raised-button class="example-half-width" color="primary"
+                                        (click)="openPopUpUpdateSkill(skill)"><mat-icon matSuffix>edit</mat-icon>
+                                        EDIT</button>
+                                    <button mat-raised-button class="example-half-width" color="warn"
+                                        (click)="openSkillDeleteAlertPopUp(skill)"><mat-icon
+                                            matSuffix>delete</mat-icon>DELETE</button>
+                                </div>
+
+                            </mat-expansion-panel>
+                        </ng-container>
+                    </mat-accordion>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button color="primary" (click)="openPopUpNewSkill()">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[3].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <!-- LANGUAGE SECTION -->
+            <div [class.my-class]="isLanguageClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="container mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[4].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container">
+                    <p>
+                        <button mat-button class="title example-full-width">
+                            YOUR ALL LANGUAGES
+                        </button>
+                    </p>
+                </div>
+                <div class="container mt-2 mb-4">
+                    <hr>
+                    <mat-accordion>
+                        <ng-container *ngFor="let language of languages;let i = index">
+                            <mat-expansion-panel>
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{i+1}}) {{language.langTitle}}
+                                    </mat-panel-title>
+                                    <mat-panel-description>
+                                        {{language.level}}
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+
+                                <div class="example-button-row ">
+                                    <button mat-raised-button class="example-half-width" color="primary"
+                                        (click)="openPopUpUpdateLanuage(language)"><mat-icon
+                                            matSuffix>edit</mat-icon>EDIT</button>
+                                    <button mat-raised-button class="example-half-width" color="warn"
+                                        (click)="openLanguageDeleteAlertPopUp(language)"><mat-icon
+                                            matSuffix>delete</mat-icon>DELETE</button>
+                                </div>
+
+                            </mat-expansion-panel>
+                        </ng-container>
+                    </mat-accordion>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button color="primary" (click)="openPopUpNewLanguage()">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[4].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+
+            <!-- Activity - Certification SECTION -->
+            <div [class.my-class]="isActivityCertificationClick">
+                <div class="container mt-3">
+                    <mat-progress-bar></mat-progress-bar>
+                    <div class="mt-2">
+                        <p>
+                            <button mat-stoked-button class="logo" color="accent" disabled>
+                                {{toggleItems[5].toUpperCase()}}
+                            </button>
+                        </p>
+                    </div>
+                </div>
+                <div class="container mt-2">
+                    <div class="mt-2 mb-3">
+                        <div class="container">
+                            <p>
+                                <button mat-button class="title example-full-width">
+                                    YOUR ALL {{toggleItems[5].toUpperCase()}}
+                                </button>
+                            </p>
+                        </div>
+                        <div class="example-full-width">
+                            <mat-accordion>
+                                <ng-container
+                                    *ngFor="let activityCertificate of activityCertificationList; let i = index">
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                {{i+1}}) {{activityCertificate.actCerTitle}}
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+                                        <div class="example-button-row ">
+                                            <button mat-raised-button class="example-half-width" color="primary"
+                                                (click)="openPopUpUpdateActivityCertification(activityCertificate)"><mat-icon
+                                                    matSuffix>edit</mat-icon>EDIT</button>
+                                            <button mat-raised-button class="example-half-width" color="warn"
+                                                (click)="openActivityCertificationDeleteAlertPopUp(activityCertificate)"><mat-icon
+                                                    matSuffix>delete</mat-icon>DELETE</button>
+                                        </div>
+
+                                    </mat-expansion-panel>
+                                </ng-container>
+                            </mat-accordion>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="container float-flex">
+                    <button type="button" mat-raised-button color="primary"
+                        (click)="openPopUpNewActivityCertification()">
+                        <mat-icon>add</mat-icon> NEW {{toggleItems[5].toUpperCase()}}
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

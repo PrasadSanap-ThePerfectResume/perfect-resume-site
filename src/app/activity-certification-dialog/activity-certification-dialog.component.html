@@ -1,0 +1,15 @@
+<form [formGroup]="myAcitivityCertForm">
+
+    <h1 mat-dialog-title class="logo mt-4 mb-4 text-center">{{ headerTitleText}} YOUR ACTIVITY CERTIFICATION</h1>
+    <div mat-dialog-content>
+        <mat-form-field appearance="outline" class="mt-4 example-full-width">
+            <mat-label>Activity-Certification Title</mat-label>
+            <input formControlName="actCerTitle"  matInput>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="openAcitivityCertUpdateAlertPopUp()" [class.my-class]="isUpdateButtonShow" >Update</button>
+        <button mat-raised-button color="primary" (click)="createNewActivityCerData()" [class.my-class]="isSaveButtonShow">Save</button>
+        <button mat-raised-button  color="warn" (click)="closeActivityCertPopUp()">Close</button>
+    </div>
+</form>

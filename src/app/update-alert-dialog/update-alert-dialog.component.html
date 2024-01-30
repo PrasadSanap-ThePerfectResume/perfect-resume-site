@@ -1,0 +1,15 @@
+<form >
+
+    
+    <div mat-dialog-title class="text-center">
+        <mat-icon color="warn" >warning</mat-icon>
+        <hr>
+        <p>Are you sure about to save changes ?</p>
+        <hr>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="saveCurrent(true)">Yes</button>
+        <button mat-raised-button  color="warn"(click)="closeUpdatePopUp(false)">No</button>
+        <!-- <button mat-button (click)="closeSkillPopUp()" color="accent">Cancel</button> -->
+    </div>
+</form>

@@ -1,0 +1,17 @@
+<form [formGroup]="myAchievementForm">
+
+    <h1 mat-dialog-title class="logo mt-4 mb-4 text-center">{{headerTitleText}} YOUR PROJECT</h1>
+    <div mat-dialog-content class="mt-4">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Achievement Description</mat-label>
+                <input matInput maxlength="100" placeholder="Achievement Description" type="text"
+                    formControlName="achievement" required>
+        
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="openAchievementUpdateAlertPopUp()" [class.my-class]="isUpdateButtonShow" >Update</button>
+        <button mat-raised-button color="primary" (click)="createNewAchievementData()" [class.my-class]="isSaveButtonShow">Save</button>
+        <button mat-raised-button  color="warn" (click)="closeAchievementPopUp()">Close</button>
+    </div>
+</form>

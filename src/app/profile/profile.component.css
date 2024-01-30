@@ -1,0 +1,47 @@
+.my-class{
+    display: none;
+}
+
+.example-full-width{
+    width: 100%;
+}
+.example-half-width{
+    width: 50%;
+}
+button[disabled] {
+    width: 100%;
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+    border: 1px solid #f7007c;
+}
+.ms-1 {
+    margin-left: .1rem !important;
+}
+
+.info{
+    background-color:cyan;
+}
+
+.green{
+    background-color: #157649;
+    color:white
+
+}
+
+.float-flex button{
+   width: 100%;
+}
+button.title {
+    font-weight: bold;
+    font-size: 150rem;
+    font-size: 100%;
+    letter-spacing: 3px;
+    word-spacing: 3px;
+    pointer-events: none;
+    color: #f7007c;
+}

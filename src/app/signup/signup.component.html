@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="container center-text">
+        <p>
+          <button mat-button class="logo" >
+            CREATE NEW ACCOUNT
+          </button>
+        </p>
+      </div>
+  
+
+    <form class="example-form" [formGroup]="signupFormWithGmail">
+        <mat-form-field appearance="outline"  class="example-half-width">
+            <mat-label>First Name</mat-label>
+            <input matInput maxlength="15" placeholder="First Name" type="text" formControlName="firstname" required
+                [readonly]="readOnly">
+            <mat-hint>{{firstNameHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-half-width">
+            <mat-label>Last Name</mat-label>
+            <input matInput maxlength="15" placeholder="Last Name" type="text" formControlName="lastname" required
+                [readonly]="readOnly">
+            <mat-hint>{{lastNameHint}}</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input matInput maxlength="25" placeholder="Email" type="email" formControlName="username" required
+                [readonly]="readOnly">
+            <mat-hint>{{emailHint}}</mat-hint>
+            <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="devider example-full-width" name="btnVerify"
+            [disabled]="isDisableSendOTP" (click)="sendOTP()">{{textSendOTP}}</button>
+    </form>
+    <form class="example-form" [formGroup]="signupFormWithOTP">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>OTP</mat-label>
+            <mat-hint>{{otpHint}}</mat-hint>
+            <input matInput maxlength="6" placeholder="OTP" type="text" pattern="[0-9]*" formControlName="otp"
+                [readonly]="readOnlyOTP" [required]="true">
+        </mat-form-field>
+        <button mat-raised-button color="primary" class="devider example-full-width" name="btnVerify"
+            [disabled]="isDisableVerifyOTP" (click)="verifyOTP()">Verify OTP</button>
+    </form>
+    <form class="example-form" [formGroup]="signupFormWithPassword">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input matInput maxlength="16" minlength="8" placeholder="Password" type="password"
+                [type]="hide ? 'password' : 'text'" [readonly]="readOnlyPassword" formControlName="password"
+                [required]="true">
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput maxlength="16" minlength="8" placeholder="Confirm Password" type="password"
+                [type]="hide ? 'password' : 'text'" [readonly]="readOnlyPassword" formControlName="confirmPassword"
+                [required]="true">
+            <mat-hint>{{confirmPasswordHint}}</mat-hint>
+
+        </mat-form-field>
+        <div class="center-text">
+            <button mat-raised-button color="accent" (click)="createAccount()" type="submit"
+                [disabled]="isDisableCreateAccount" class="full-width">Create</button>
+        </div>
+    </form>
+    <hr style="margin-bottom: 30px;">
+    <div class="txt-or">
+        <p class="txt-or">OR</p>
+    </div>
+    <hr>
+    <button mat-raised-button color="primary" routerLink="/login" class="example-full-width">Login</button>
+
+
+</div>
