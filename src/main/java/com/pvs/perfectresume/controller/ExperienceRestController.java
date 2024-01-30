@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/user")
+@RequestMapping("/user/experience")
 public class ExperienceRestController {
     @Autowired
     private ExperienceService experienceService;
@@ -23,4 +23,18 @@ public class ExperienceRestController {
         return experienceService.updateExperience(apiRequestBody);
     }
 
+    @PostMapping(value = "/update1Experience",consumes="application/json",produces="application/json")
+    public ApiResponseBody updateSingleExperience(@RequestBody ApiRequestBody apiRequestBody){
+        return experienceService.updateSingleExperience(apiRequestBody.getUser(),apiRequestBody.getExperience());
+    }
+
+    @PostMapping(value = "/create",consumes="application/json",produces="application/json")
+    public ApiResponseBody createExperience(@RequestBody ApiRequestBody apiRequestBody){
+        return experienceService.createNewExperience(apiRequestBody.getUser(),apiRequestBody.getExperience());
+    }
+
+    @PostMapping(value = "/delete",consumes="application/json",produces="application/json")
+    public ApiResponseBody deleteExperience(@RequestBody ApiRequestBody apiRequestBody){
+        return experienceService.deleteExperience(apiRequestBody.getUser(),apiRequestBody.getExperience());
+    }
 }

@@ -13,7 +13,10 @@ public class ApiRequestBody {
     private Address address;
     private Education education;
     private Experience experience;
-    private List<Language> language;
-    private List<Skill> skill;
-    private List<ActivityCertification> activityCertification;
+    private Skill skill;
+    private Language language;
+    private ActivityCertification  activityCertification;
+    private List<Language> languageList;
+    private List<Skill> skillList;
+    private List<ActivityCertification> activityCertificationList;
 }

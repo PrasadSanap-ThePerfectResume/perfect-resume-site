@@ -39,15 +39,24 @@ public class UserRestController {
         return userService.findUser("prasadsanap2@gmail.com");
     }
 
+    @GetMapping(value = "/{userName}", produces = "application/json")
+    public User getUserDetails(@PathVariable String userName) {
+        return userService.findUser(userName);
+    }
+
     @PostMapping(value = "/create", consumes = "application/json", produces = "application/json")
     public ApiResponseBody saveUser(@RequestBody ApiRequestBody apiRequestBody) {
         return userService.saveUser(apiRequestBody);
     }
 
+    @PostMapping(value = "/login", consumes = "application/json", produces = "application/json")
+    public ApiResponseBody loginUser(@RequestBody ApiRequestBody apiRequestBody) {
+        return userService.loginUser(apiRequestBody);
+    }
 
-    @PostMapping(value = "/address", consumes = "application/json", produces = "application/json")
-    public ApiResponseBody saveAddress(@RequestBody ApiRequestBody apiRequestBody) {
-        return userService.saveAddress(apiRequestBody);
+    @PostMapping(value = "/forget", consumes = "application/json", produces = "application/json")
+    public ApiResponseBody forgetPassword(@RequestBody ApiRequestBody apiRequestBody) {
+        return userService.forgotPassword(apiRequestBody);
     }
 
 

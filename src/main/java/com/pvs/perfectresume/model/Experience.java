@@ -20,10 +20,11 @@ public class Experience {
     private String employmentType; //Full-time,Part-time,Self-employed,Freelance,Internship,Trainee
     private String companyName;
     private String location;
-    private String locationType; //On-site,Hybrid,Remote
+    private String workingMode; //On-site,Hybrid,Remote
     private String startMonth;
-    private String startYear;
-    private String endYear;
+    private boolean presentCompany;
+    private int startYear;
+    private int endYear;
     private String endMonth;
     private String skills;
     private String description;
@@ -32,7 +33,7 @@ public class Experience {
     private List<Achievement> achievements;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "experience")
-    private List<Project> project;
+    private List<Project> projects;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")

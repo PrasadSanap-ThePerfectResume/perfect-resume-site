@@ -16,6 +16,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     //User name should be email and its verified by OTP
+    private String firstname;
+    private String lastname;
     private String username;
     private String password;
     private Timestamp accountCreateDT;

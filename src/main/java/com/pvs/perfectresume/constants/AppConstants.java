@@ -10,6 +10,10 @@ public class AppConstants {
     public static final String VALID_EMAIL = "PLEASE ENTER VALID EMAIL";
     public static final String OTP_IS_EXPIRE = "YOUR OTP IS EXPIRE. PLEASE RE-SEND AGAIN";
     public static final String EXPIRE_MESSAGE = "THIS OTP IS NOT ALLOW TO VALIDATE. PLEASE ENTER CORRECT OTP";
+    public static final String UNKNOWN_USER = "PLEASE ENTER VALID USERNAME";
+    public static final String PASSWORD_NOT_MATCH = "PLEASE ENTER CORRECT PASSWORD" ;
+    public static final String LOGIN_SUCCESS ="YOU LOGIN SUCCESSFULLY" ;
+
 
     //SAVE MESSAGE
     public static final String ADDRESS_SAVE = "YOUR ADDRESS IS SAVE";
@@ -17,6 +21,7 @@ public class AppConstants {
     public static final String ACT_CERT_SAVE = "YOUR ACTIVITY OR CERTIFICATION IS SAVE";
     public static final String LANGUAGE_SAVE = "YOUR LANGUAGE IS SAVE";
     public static final String EDUCATION_SAVE = "YOUR EDUCATION IS SAVE";
+    public static final String EXPERIENCE_SAVE = "YOUR EXPERIENCE IS SAVE" ;
 
 
     //NOT SAVE MESSAGE
@@ -25,6 +30,7 @@ public class AppConstants {
     public static final String SKILL_NOT_SAVE = "YOUR SKILL IS NOT SAVE";
     public static final String ACT_CERT_NOT_SAVE = "YOUR ACTIVITY OR CERTIFICATION IS NOT SAVE";
     public static final String EDUCATION_NOT_SAVE = "YOUR EDUCATION IS NOT SAVE";
+    public static final String EXPERIENCE_NOT_SAVE ="YOUR EXPERIENCE IS NOT SAVE" ;
 
 
     //UPDATE MESSAGE
@@ -34,6 +40,9 @@ public class AppConstants {
     public static final String LANGUAGE_UPDATED = "YOUR LANGUAGE IS UPDATED";
     public static final String ACT_CERT_UPDATED = "YOUR ACTIVITY OR CERTIFICATION IS UPDATED";
     public static final String SKILL_UPDATED = "YOUR SKILL IS UPDATED";
+    public static final String ADDRESS_UPDATED = "YOUR SKILL IS UPDATED";
+    public static final String PASSWORD_UPDATED ="YOUR PASSWORD IS UPDATED" ;
+
 
 
     //NOT UPDATE MESSAGE
@@ -42,6 +51,7 @@ public class AppConstants {
     public static final String LANGUAGE_NOT_UPDATED = "YOUR LANGUAGE IS NOT UPDATED";
     public static final String ACT_CERT_NOT_UPDATED = "YOUR ACTIVITY OR CERTIFICATION IS NOT UPDATED";
     public static final String SKILL_NOT_UPDATED = "YOUR SKILL IS NOT UPDATED";
+    public static final String ADDRESS_NOT_UPDATED = "YOUR SKILL IS NOT UPDATED";
 
 
     //STATUS MESSAGE
@@ -49,15 +59,37 @@ public class AppConstants {
     public static final String FAILED = "FAILED";
     public static final String EXPIRED = "EXPIRED";
     public static final String CREATED = "CREATED";
+    public static final String WRONG_PASSWORD ="WRONG PASSWORD" ;
+    public static final String UPDATED = "UPDATED";
+    public static final String DELETED = "DELETED";
+
+   //NOT DELETED MESSAGE
+    public static final String SKILL_NOT_DELETED ="YOUR SKILL IS NOT DELETED" ;
+    public static final String LANGUAGE_NOT_DELETED = "YOUR LANGUAGE IS NOT DELETED";
+    public static final String ACT_CERT_NOT_DELETED = "YOUR ACTIVITY OR CERTIFICATION IS NOT DELETED";
+    public static final String EDUCATION_NOT_DELETED = "YOUR EDUCATION IS NOT DELETED";
+    public static final String EXPERIENCE_NOT_DELETED = "YOUR EXPERIENCE IS NOT DELETED";
+    public static final String ADDRESS_NOT_DELETED = "YOUR ADDRESS IS NOT DELETED";
+
+
+    //DELETED MESSAGE
+    public static final String SKILL_DELETED ="YOUR SKILL IS DELETED" ;
+    public static final String LANGUAGE_DELETED ="YOUR LANGUAGE IS DELETED" ;
+    public static final String ACT_CERT_DELETED = "YOUR ACTIVITY OR CERTIFICATION IS DELETED";
+    public static final String EDUCATION_DELETED = "YOUR EDUCATION IS DELETED";
+    public static final String EXPERIENCE_DELETED = "YOUR EXPERIENCE IS DELETED";
+    public static final String ADDRESS_DELETED = "YOUR ADDRESS IS DELETED";
 
     //STATUS CODES
     public static final int SUCCESS_CODE = 1001;
     public static final int CREATED_CODE = 1002;
     public static final int FAILED_CODE = 1004;
     public static final int EXPIRED_CODE = 1009;
+    public static final int WRONG_PASSWORD_CODE = 1006;
+    public static final int UPDATED_CODE = 1003 ;
+
 
     //FINAL VALUES
     public static final String OTP_EXPIRED = "EXPIRED-OTP";
     public static final String DATE_TIME_FORMAT = "dd-MM-yyyy HH:mm:ss";
-
 }

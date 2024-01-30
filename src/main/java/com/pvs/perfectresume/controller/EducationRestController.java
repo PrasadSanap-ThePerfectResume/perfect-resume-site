@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/user")
+@RequestMapping("/user/education")
 public class EducationRestController {
     @Autowired
     private EducationService educationService;
@@ -24,4 +24,19 @@ public class EducationRestController {
         return educationService.updateEducation(apiRequestBody);
     }
 
+
+    @PostMapping(value = "/update1Education",consumes="application/json",produces="application/json")
+    public ApiResponseBody updateSingleEducation(@RequestBody ApiRequestBody apiRequestBody){
+        return educationService.updateSingleEducation(apiRequestBody.getUser(),apiRequestBody.getEducation());
+    }
+
+    @PostMapping(value = "/create",consumes="application/json",produces="application/json")
+    public ApiResponseBody createEducation(@RequestBody ApiRequestBody apiRequestBody){
+        return educationService.createNewEducation(apiRequestBody.getUser(),apiRequestBody.getEducation());
+    }
+
+    @PostMapping(value = "/delete",consumes="application/json",produces="application/json")
+    public ApiResponseBody deleteEducation(@RequestBody ApiRequestBody apiRequestBody){
+        return educationService.deleteEducation(apiRequestBody.getUser(),apiRequestBody.getEducation());
+    }
 }

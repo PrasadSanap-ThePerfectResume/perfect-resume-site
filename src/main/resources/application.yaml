@@ -7,11 +7,13 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  log:
+    level: debug
   mail:
     host: smtp.gmail.com
     port: 587
-    username: yourusername
-    password: yourpassword
+    username: sanapprasad2021@gmail.com
+    password: otrgwusrmdkigijr
     properties:
       mail:
         smtp:

@@ -4,9 +4,11 @@ import com.pvs.perfectresume.model.ApiRequestBody;
 import com.pvs.perfectresume.model.ApiResponseBody;
 import com.pvs.perfectresume.service.ActivityCertificationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
+@CrossOrigin("*")
+@RequestMapping("/user/activity-certificate")
 public class ActivityCertificationRestController {
 
     @Autowired
@@ -20,5 +22,21 @@ public class ActivityCertificationRestController {
     @PostMapping(value = "/uActivityCertification", consumes = "application/json", produces = "application/json")
     public ApiResponseBody updateActivityCertification(@RequestBody ApiRequestBody apiRequestBody) {
         return activityCertificationService.updateActivityCertification(apiRequestBody);
+    }
+
+
+    @PostMapping(value = "/update1ActivityCertificate",consumes="application/json",produces="application/json")
+    public ApiResponseBody updateSingleActivityCertificate(@RequestBody ApiRequestBody apiRequestBody){
+        return activityCertificationService.updateSingleActivityCertificate(apiRequestBody.getUser(),apiRequestBody.getActivityCertification());
+    }
+
+    @PostMapping(value = "/create",consumes="application/json",produces="application/json")
+    public ApiResponseBody createActivityCertificate(@RequestBody ApiRequestBody apiRequestBody){
+        return activityCertificationService.createNewActivityCertificate(apiRequestBody.getUser(),apiRequestBody.getActivityCertification());
+    }
+
+    @PostMapping(value = "/delete",consumes="application/json",produces="application/json")
+    public ApiResponseBody deleteActivityCertificate(@RequestBody ApiRequestBody apiRequestBody){
+        return activityCertificationService.deleteActivityCertificate(apiRequestBody.getUser(),apiRequestBody.getActivityCertification());
     }
 }

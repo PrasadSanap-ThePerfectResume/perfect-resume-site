@@ -16,7 +16,7 @@ public class Skill {
     private Integer skillId;
 
     private String skillTitle;
-    private int level;
+    private String level;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")

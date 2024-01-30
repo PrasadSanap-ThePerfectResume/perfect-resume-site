@@ -86,10 +86,10 @@ public class UserServiceImpl implements UserService {
             User user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
             if (user == null) {
                 //Save user first into table
-                userRepository.save(apiRequestBody.getUser());
+                user= userRepository.save(apiRequestBody.getUser());
             }
             //Fetch user from table with id.
-            user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
+            //user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
             OTPValidation otpValidation = otpValidationRepository.findByUsername(apiRequestBody.getUser().getUsername());
             if (otpValidation == null) {
                 //Creating new record.
@@ -180,6 +180,48 @@ public class UserServiceImpl implements UserService {
         apiResponseBody.setMessage(AppConstants.USER_CREATED);
         apiResponseBody.setStatus(AppConstants.CREATED);
         apiResponseBody.setStatusCode(AppConstants.CREATED_CODE);
+        return apiResponseBody;
+    }
+
+    @Override
+    public ApiResponseBody loginUser(ApiRequestBody apiRequestBody) {
+        logger.debug("Start of loginUser()");
+        User user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
+        apiResponseBody = new ApiResponseBody();
+        if(user == null){
+            apiResponseBody.setMessage(AppConstants.UNKNOWN_USER);
+            apiResponseBody.setStatus(AppConstants.FAILED);
+            apiResponseBody.setStatusCode(AppConstants.FAILED_CODE);
+        }else if (user != null && user.getPassword().equals(apiRequestBody.getUser().getPassword())){
+            apiResponseBody.setMessage(AppConstants.LOGIN_SUCCESS);
+            apiResponseBody.setStatus(AppConstants.SUCCESS);
+            apiResponseBody.setStatusCode(AppConstants.SUCCESS_CODE);
+        }else{
+            apiResponseBody.setMessage(AppConstants.PASSWORD_NOT_MATCH);
+            apiResponseBody.setStatus(AppConstants.WRONG_PASSWORD);
+            apiResponseBody.setStatusCode(AppConstants.WRONG_PASSWORD_CODE);
+        }
+        logger.debug("End of loginUser()");
+        return apiResponseBody;
+    }
+
+    @Override
+    public ApiResponseBody forgotPassword(ApiRequestBody apiRequestBody) {
+        logger.debug("Start of forgotPassword()");
+        User user = userRepository.findByUsername(apiRequestBody.getUser().getUsername());
+        apiResponseBody = new ApiResponseBody();
+        if(user == null){
+            apiResponseBody.setMessage(AppConstants.UNKNOWN_USER);
+            apiResponseBody.setStatus(AppConstants.FAILED);
+            apiResponseBody.setStatusCode(AppConstants.FAILED_CODE);
+        }else if(user != null){
+            user.setPassword(apiRequestBody.getUser().getPassword());
+            userRepository.save(user);
+            apiResponseBody.setMessage(AppConstants.PASSWORD_UPDATED);
+            apiResponseBody.setStatus(AppConstants.UPDATED);
+            apiResponseBody.setStatusCode(AppConstants.UPDATED_CODE);
+        }
+        logger.debug("End of forgotPassword()");
         return apiResponseBody;
     }
 

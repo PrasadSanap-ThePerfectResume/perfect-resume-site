@@ -30,7 +30,7 @@ public class OTPExpiredScheduler {
      *  @Scheduled(fixedDelay = 100000) ----> Every Five Minute
      *///  @Scheduled(cron = "0 */5 * ? * *")  ----> Every Five Minute
 
-    @Scheduled(fixedDelay = 100000)
+   // @Scheduled(fixedDelay = 100000)
     void doOtpExpireProcess() {
         logger.debug("Start doOtpExpireProcess()");
         logger.info("Reset Value:{} | Interval:{} | Stamp:{}", resetValue, interval);

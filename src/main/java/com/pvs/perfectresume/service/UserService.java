@@ -20,25 +20,7 @@ public interface UserService {
 
     ApiResponseBody saveUser(ApiRequestBody apiRequestBody);
 
+    ApiResponseBody loginUser(ApiRequestBody apiRequestBody);
 
-//    ApiResponseBody saveExperience(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody updateExperience(ApiRequestBody apiRequestBody);
-//
-//
-//    ApiResponseBody saveSkill(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody saveActivityCertification(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody updateEducation(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody saveEducation(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody saveLanguage(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody updateLanguage(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody updateSkill(ApiRequestBody apiRequestBody);
-//
-//    ApiResponseBody updateActivityCertification(ApiRequestBody apiRequestBody);
+    ApiResponseBody forgotPassword(ApiRequestBody apiRequestBody);
 }

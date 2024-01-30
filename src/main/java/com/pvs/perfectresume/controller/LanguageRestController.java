@@ -6,21 +6,44 @@ import com.pvs.perfectresume.service.LanguageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
+/**
+ * END POINT -Ends with L is List
+ * @author Prasad Sanap
+ * @since 2023
+ */
+
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/user")
+@RequestMapping("/user/language")
 public class LanguageRestController {
 
     @Autowired
-    private LanguageService LanguageService;
+    private LanguageService languageService;
 
-    @PostMapping(value = "/language", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/languageL", consumes = "application/json", produces = "application/json")
     public ApiResponseBody saveLanguage(@RequestBody ApiRequestBody apiRequestBody) {
-        return LanguageService.saveLanguage(apiRequestBody);
+        return languageService.saveLanguageList(apiRequestBody);
     }
 
-    @PostMapping(value = "/uLanguage", consumes = "application/json", produces = "application/json")
+    @PostMapping(value = "/uLanguageL", consumes = "application/json", produces = "application/json")
     public ApiResponseBody updateLanguage(@RequestBody ApiRequestBody apiRequestBody) {
-        return LanguageService.updateLanguage(apiRequestBody);
+        return languageService.updateLanguage(apiRequestBody);
+    }
+
+
+    @PostMapping(value = "/update1Language",consumes="application/json",produces="application/json")
+    public ApiResponseBody updateSingleLanguage(@RequestBody ApiRequestBody apiRequestBody){
+        return languageService.updateSingleLanguage(apiRequestBody.getUser(),apiRequestBody.getLanguage());
+    }
+
+    @PostMapping(value = "/create",consumes="application/json",produces="application/json")
+    public ApiResponseBody createLanguage(@RequestBody ApiRequestBody apiRequestBody){
+        return languageService.createNewLanguage(apiRequestBody.getUser(),apiRequestBody.getLanguage());
+    }
+
+    @PostMapping(value = "/delete",consumes="application/json",produces="application/json")
+    public ApiResponseBody deleteLanguage(@RequestBody ApiRequestBody apiRequestBody){
+        return languageService.deleteLanguage(apiRequestBody.getUser(),apiRequestBody.getLanguage());
     }
 }

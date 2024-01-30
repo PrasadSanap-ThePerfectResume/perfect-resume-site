@@ -18,12 +18,13 @@ public class Education {
     private String university;
     private String college;
     private String stream;
-    private String startYear;
-    private String endYear;
+    private int startYear;
+    private int endYear;
     private String startMonth;
+    private boolean presentCollege;
     private String endMonth;
-    private String mark;
-    private String educationType; //Full time,Part time,
+    private String percentage;
+    private String educationMode; //Full time,Part time,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")

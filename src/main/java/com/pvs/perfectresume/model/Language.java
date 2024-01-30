@@ -16,7 +16,7 @@ public class Language {
     private Integer languageId;
 
     private String langTitle;
-    private int level;
+    private String level;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
